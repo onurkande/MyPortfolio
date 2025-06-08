@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAVA Medya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Genel Sıfırlamalar */
+
+        :root {
+            --primary-color: #ffcc00;
+            --secondary-color: #000;
+        }
+        body, h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Header Stili */
+        .header {
+            background: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+            margin-right: 15px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00;
+        }
+
+        /* Sosyal Medya ve Dil Seçici */
+        .social-links img {
+            width: 20px;
+            margin-left: 10px;
+        }
+
+        .language-selector {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            margin-left: 15px;
+        }
+
+        /* Hero Bölümü */
+        .hero {
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            background: #ffcc00;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Logo -->
+                <a href="#" class="navbar-brand">VAVA</a>
+
+                <!-- Navbar Toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#">Anasayfa</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Hakkımızda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Hizmetler</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Projeler</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">İletişim</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Links & Language -->
+                <div class="d-flex align-items-center">
+                    <div class="social-links">
+                        <a href="#"><img src="icons/facebook.svg" alt="Facebook"></a>
+                        <a href="#"><img src="icons/instagram.svg" alt="Instagram"></a>
+                        <a href="#"><img src="icons/twitter.svg" alt="Twitter"></a>
+                    </div>
+                    <select class="language-selector">
+                        <option value="tr">TR</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container text-center">
+            <h1 class="hero-title">VAVA Medya</h1>
+            <p class="hero-subtitle">Profesyonel tasarım ve medya çözümleri sunuyoruz.</p>
+            <a href="#" class="btn btn-primary">Hizmetlerimizi Keşfedin</a>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

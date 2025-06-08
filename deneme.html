@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAVA Media</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* General Styles */
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --dark-color: #1a1a2e;
+    --light-color: #ffffff;
+    --gray-color: #f8f9fa;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar */
+.navbar {
+    background-color: transparent;
+    padding: 20px 0;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: rgba(26, 26, 46, 0.9);
+    padding: 15px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+}
+
+.nav-link {
+    font-weight: 500;
+    margin: 0 10px;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Hero Section */
+#hero {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    color: var(--light-color);
+}
+
+.hero-text {
+    padding-top: 150px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 80%;
+}
+
+.clouds {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cloud1, .cloud2, .cloud3 {
+    position: absolute;
+    opacity: 0.8;
+}
+
+.cloud1 {
+    top: 20%;
+    left: 10%;
+    width: 300px;
+    animation: float 30s linear infinite;
+}
+
+.cloud2 {
+    top: 40%;
+    right: 15%;
+    width: 200px;
+    animation: float 25s linear infinite reverse;
+}
+
+.cloud3 {
+    bottom: 30%;
+    left: 30%;
+    width: 250px;
+    animation: float 35s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(100px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.mountains {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background-image: url('https://assets.codepen.io/721952/mountains.png');
+    background-size: cover;
+    background-position: center bottom;
+    z-index: 1;
+}
+
+/* About Section */
+#about {
+    padding: 100px 0;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#about h2 span {
+    color: var(--primary-color);
+}
+
+#about h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.logo-circle {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 40px rgba(106, 17, 203, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-circle::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+    transform: rotate(45deg);
+    top: -25%;
+    left: -25%;
+}
+
+/* Portfolio Section */
+#portfolio {
+    padding: 100px 0;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    transition: all 0.5s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Services Section */
+#services {
+    padding: 100px 0;
+    background-color: var(--dark-color);
+}
+
+#services h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+}
+
+.service-list li {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.service-list li i {
+    color: var(--secondary-color);
+}
+
+/* Features Section */
+#features {
+    padding: 100px 0;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+    box-shadow: 0 10px 20px rgba(106, 17, 203, 0.2);
+}
+
+/* Logo Showcase */
+#logo-showcase {
+    padding: 100px 0;
+    background-color: var(--gray-color);
+}
+
+/* Clients Section */
+#clients {
+    padding: 100px 0;
+}
+
+.client-logos img {
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    filter: grayscale(100%);
+}
+
+.client-logos img:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+/* Innovation Section */
+#innovation {
+    padding: 100px 0;
+    background-color: var(--dark-color);
+}
+
+.innovation-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+footer {
+    padding: 80px 0 30px;
+    background-color: var(--dark-color);
+}
+
+footer h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+footer h5 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+footer h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
+
+footer ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+}
+
+footer ul li a:hover {
+    color: var(--light-color);
+    padding-left: 5px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--light-color);
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-text p {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+    
+    .logo-circle {
+        width: 300px;
+        height: 300px;
+    }
+    
+    #about h2 {
+        font-size: 2rem;
+    }
+    
+    #about h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-text {
+        padding-top: 120px;
+        text-align: center;
+    }
+    
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-text p {
+        margin: 0 auto;
+    }
+    
+    .logo-circle {
+        width: 250px;
+        height: 250px;
+        margin-top: 40px;
+    }
+    
+    #services h2 {
+        font-size: 1.8rem;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .logo-circle {
+        width: 200px;
+        height: 200px;
+    }
+    
+    #about, #portfolio, #services, #features, #clients, #innovation {
+        padding: 60px 0;
+    }
+    
+    footer {
+        padding: 60px 0 20px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">VAVA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <div class="ms-3 d-flex">
+                    <a href="#" class="text-white me-2"><i class="fas fa-search"></i></a>
+                    <a href="#" class="text-white"><i class="fas fa-globe"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 hero-text">
+                    <h1>Creative solutions for your digital presence</h1>
+                    <p>We help brands stand out in the digital landscape with innovative design and strategic thinking.</p>
+                </div>
+            </div>
+        </div>
+        <div class="clouds">
+            <img src="https://assets.codepen.io/721952/cloud1.png" class="cloud1">
+            <img src="https://assets.codepen.io/721952/cloud2.png" class="cloud2">
+            <img src="https://assets.codepen.io/721952/cloud3.png" class="cloud3">
+        </div>
+        <div class="mountains"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2>Vava <span>Medya</span></h2>
+                    <h3>Merhaba! Bizi yakından tanıyın, Biz Vava Medya.</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel orci ultricies volutpat. Sed in turpis vitae sem vulputate hendrerit. Nullam eget diam egestas.</p>
+                    <div class="d-flex align-items-center mt-4">
+                        <i class="fas fa-map-marker-alt text-primary me-2"></i>
+                        <p class="mb-0">İstanbul'da dijital çözümler sunuyoruz</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="logo-circle">
+                        <img src="/placeholder.svg?height=400&width=400" alt="VAVA Logo" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Portfolio Item" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Portfolio Item" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Portfolio Item" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Portfolio Item" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Portfolio Item" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="portfolio-item">
+                        <img src="/placeholder.svg?height=300&width=400" alt="Portfolio Item" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Aradığınız Çözümler Burada! Bizimle Hemen Keşfedin!</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel orci ultricies volutpat.</p>
+                    <ul class="list-unstyled service-list">
+                        <li><i class="fas fa-check me-2"></i> Dijital Medya Ajansı</li>
+                        <li><i class="fas fa-check me-2"></i> Web Tasarım</li>
+                        <li><i class="fas fa-check me-2"></i> Sosyal Medya Yönetimi</li>
+                        <li><i class="fas fa-check me-2"></i> Grafik Tasarım</li>
+                        <li><i class="fas fa-check me-2"></i> Marka Stratejisi</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <p>Vava olarak biz, müşterilerimizin dijital varlıklarını en iyi şekilde yönetmek için buradayız.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-md-12">
+                    <h2>Tüm İhtiyaçlarınız İçin Buradayız</h2>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-2 col-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h5>Web</h5>
+                </div>
+                <div class="col-md-2 col-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h5>Mobile</h5>
+                </div>
+                <div class="col-md-2 col-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h5>Design</h5>
+                </div>
+                <div class="col-md-2 col-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h5>SEO</h5>
+                </div>
+                <div class="col-md-2 col-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h5>Marketing</h5>
+                </div>
+                <div class="col-md-2 col-4 mb-4">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h5>Support</h5>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <p>Her ihtiyacınız için buradayız. Dijital dünyada markanızı öne çıkarmak için bizimle iletişime geçin.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="btn btn-primary">Hemen Başlayalım</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VAVA Logo Showcase -->
+    <section id="logo-showcase" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <img src="/placeholder.svg?height=200&width=200" alt="VAVA Logo" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients" class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-md-12">
+                    <h2>Müşterilerimiz</h2>
+                    <p>Birlikte çalıştığımız markalar</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="client-logos">
+                        <!-- First row of logos -->
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                        </div>
+                        <!-- Second row of logos -->
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                        </div>
+                        <!-- Third row of logos -->
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                        </div>
+                        <!-- Fourth row of logos -->
+                        <div class="row g-4">
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                            <div class="col-md-2 col-4"><img src="/placeholder.svg?height=80&width=120" alt="Client Logo" class="img-fluid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Innovation Section -->
+    <section id="innovation" class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2>Öncü Yaklaşımlar</h2>
+                    <p>Dijital dünyada yenilikçi çözümler sunuyoruz. Teknoloji ve tasarımı bir araya getirerek markanızı öne çıkarıyoruz.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="innovation-image">
+                        <img src="/placeholder.svg?height=400&width=600" alt="Innovation" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h3>VAVA</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis erat vel orci ultricies volutpat.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Services</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Web Design</a></li>
+                        <li><a href="#">Mobile Development</a></li>
+                        <li><a href="#">Branding</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">SEO Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Contact</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Istanbul, Turkey</li>
+                        <li><i class="fas fa-phone me-2"></i> +90 123 456 7890</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@vavamedya.com</li>
+                    </ul>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12 text-center">
+                    <p class="mb-0">© 2025 VAVA Medya. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Navbar scroll effect
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Cloud animation
+function animateClouds() {
+    const clouds = document.querySelectorAll('.cloud1, .cloud2, .cloud3');
+    
+    clouds.forEach(cloud => {
+        const speed = Math.random() * 10 + 20;
+        const direction = Math.random() > 0.5 ? 1 : -1;
+        
+        cloud.style.animation = `float ${speed}s linear infinite${direction < 0 ? ' reverse' : ''}`;
+    });
+}
+
+// Portfolio hover effect
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+portfolioItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px)';
+    });
+    
+    item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+    });
+});
+
+// Initialize animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    animateClouds();
+    
+    // Active nav link based on scroll position
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', function() {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (window.scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+    
+    // Animate elements on scroll
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.feature-icon, .portfolio-item, .logo-circle');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementPosition < windowHeight - 100) {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }
+        });
+    };
+    
+    // Set initial state for animated elements
+    const elementsToAnimate = document.querySelectorAll('.feature-icon, .portfolio-item, .logo-circle');
+    elementsToAnimate.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'all 0.6s ease';
+    });
+    
+    // Run animation on scroll
+    window.addEventListener('scroll', animateOnScroll);
+    // Run once on page load
+    animateOnScroll();
+});
+    </script>
+</body>
+</html>
